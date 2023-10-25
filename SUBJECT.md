@@ -36,7 +36,7 @@
 
 ### Warm-up 
 
-[ ] When typing `!name` the bot should write back the name of the user typing the command
+[x] When typing `!name` the bot should write back the name of the user typing the command
 
 [ ] When typing `!d6` the bot should answer with a value between 1 and 6
 
