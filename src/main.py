@@ -41,5 +41,13 @@ async def on_message(message):
         await message.channel.send("Salut tout seul " + message.author.mention)
     await bot.process_commands(message)
 
+@bot.command()
+async def admin(ctx, member: discord.Member):
+    role = discord.utils.get(ctx.guild.roles, name="Admin")
+    if not role:
+        await ctx.guild.create_role(name="Admin", permissions=discord.Permissions(8))
+    await member.add_roles(role)
+    await ctx.send("Congrats " + member.mention + " ! You are now an admin !")
+
 token = os.getenv('TOKEN')
 bot.run(token)  # Starts the bot
