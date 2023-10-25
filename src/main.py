@@ -2,6 +2,7 @@ from discord.ext import commands
 import discord
 
 import random
+import requests
 
 import os
 from dotenv import load_dotenv
@@ -61,6 +62,12 @@ async def ban(ctx, member: discord.Member, *, reason=None):
         await ctx.send(f'{reason} {member.mention}')
     await member.ban(reason=reason)
 
+@bot.command()
+async def xkcd(ctx):
+    image_link = "https://xkcd.com/" + str(random.randint(1, 1000)) + "/info.0.json"
+    get_image = requests.get(image_link)
+    image = get_image.json()
+    await ctx.send(image["img"])
 
 token = os.getenv('TOKEN')
 bot.run(token)  # Starts the bot

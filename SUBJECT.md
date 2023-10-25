@@ -47,12 +47,12 @@
 
 - [x] When typing `!ban <A member nickname> <ban reason?>`, your bot should ban that member from the server (**Test with caution**) displaying the input reason for the ban. If no ban reason is input, your bot should display a funny catchphrase picked at random in a given list
 
-[ ] The command `!flood` should activate (or deactivate) a moderation workflow. When activated, your bot should monitor the messages and display a warning to any user posting more than X messages in the last Y minutes. The (de)activation should be confirmed using a custom message
+- [ ] The command `!flood` should activate (or deactivate) a moderation workflow. When activated, your bot should monitor the messages and display a warning to any user posting more than X messages in the last Y minutes. The (de)activation should be confirmed using a custom message
 
 
 
 ### It's all fun and games
-[ ] When typing `!xkcd`, your post should post a random comic from https://xkcd.com
+- [x] When typing `!xkcd`, your post should post a random comic from https://xkcd.com
 
 [ ] When typing `!poll <question>`, your bot should post a @here mention followed by a Yes/No question. The bost will then write the question again in another message and add one :thumbsup: and one :thumbsdown: emoji reaction to its message 
 - Example : `!poll "Should we get burgers ?"`
