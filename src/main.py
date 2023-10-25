@@ -1,12 +1,12 @@
 from discord.ext import commands
-import discord
-
-import random
-import requests
-import asyncio
-
-import os
 from dotenv import load_dotenv
+import asyncio
+import discord
+import json
+import os
+import random
+import urllib.request
+
 load_dotenv()
 
 intents = discord.Intents.default()
@@ -66,8 +66,8 @@ async def ban(ctx, member: discord.Member, *, reason=None):
 @bot.command()
 async def xkcd(ctx):
     image_link = "https://xkcd.com/" + str(random.randint(1, 1000)) + "/info.0.json"
-    get_image = requests.get(image_link)
-    image = get_image.json()
+    get_image = urllib.request.urlopen(image_link)
+    image = json.load(get_image)
     await ctx.send(image["img"])
 
 @bot.command()
