@@ -1,6 +1,8 @@
 from discord.ext import commands
 import discord
 
+import random
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -28,6 +30,10 @@ async def pong(ctx):
 @bot.command()
 async def name(ctx):
     await ctx.send(ctx.author.name)
+
+@bot.command()
+async def d6(ctx):
+    await ctx.send(random.randint(1,6))
 
 token = os.getenv('TOKEN')
 bot.run(token)  # Starts the bot
