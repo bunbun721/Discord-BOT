@@ -49,5 +49,18 @@ async def admin(ctx, member: discord.Member):
     await member.add_roles(role)
     await ctx.send("Congrats " + member.mention + " ! You are now an admin !")
 
+@bot.command()
+async def ban(ctx, member: discord.Member, *, reason=None):
+    if reason is None:
+        ban_reason = [
+            "Bad bunbun",
+            "Bye bye bun :wave:",
+        ]
+        await ctx.send(f'{random.choice(ban_reason)} {member.mention}')
+    else:
+        await ctx.send(f'{reason} {member.mention}')
+    await member.ban(reason=reason)
+
+
 token = os.getenv('TOKEN')
 bot.run(token)  # Starts the bot
