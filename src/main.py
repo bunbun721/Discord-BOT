@@ -35,5 +35,11 @@ async def name(ctx):
 async def d6(ctx):
     await ctx.send(random.randint(1,6))
 
+@bot.event
+async def on_message(message):
+    if message.content == "Salut tout le monde":
+        await message.channel.send("Salut tout seul " + message.author.mention)
+    await bot.process_commands(message)
+
 token = os.getenv('TOKEN')
 bot.run(token)  # Starts the bot
