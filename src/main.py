@@ -1,6 +1,10 @@
 from discord.ext import commands
 import discord
 
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
@@ -10,7 +14,7 @@ bot = commands.Bot(
     intents = intents # Set up basic permissions
 )
 
-bot.author_id = 0000000  # Change to your discord id
+bot.author_id = 372823346007506955 # Change to your discord id
 
 @bot.event
 async def on_ready():  # When the bot is ready
@@ -21,5 +25,5 @@ async def on_ready():  # When the bot is ready
 async def pong(ctx):
     await ctx.send('pong')
 
-token = "<MY_TOKEN>"
+token = os.getenv("TOKEN")
 bot.run(token)  # Starts the bot
