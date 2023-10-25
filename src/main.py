@@ -3,6 +3,7 @@ import discord
 
 import random
 import requests
+import asyncio
 
 import os
 from dotenv import load_dotenv
@@ -68,6 +69,19 @@ async def xkcd(ctx):
     get_image = requests.get(image_link)
     image = get_image.json()
     await ctx.send(image["img"])
+
+@bot.command()
+async def poll(ctx, question, time_limit=0):
+    bot_question = await ctx.send("@here " + question)
+    await bot_question.add_reaction("👍")
+    await bot_question.add_reaction("👎")
+
+    if time_limit > 0:
+        await ctx.send("Time limit is " + str(time_limit) + " seconds")
+        await asyncio.sleep(time_limit)
+        question_result = await ctx.channel.fetch_message(bot_question.id)
+        await ctx.send("The results for ***" + question + "*** are :\n- 👍 : " + str(question_result.reactions[0].count - 1) + "\n- 👎 : " + str(question_result.reactions[1].count - 1))
+        await bot_question.delete()
 
 token = os.getenv('TOKEN')
 bot.run(token)  # Starts the bot
